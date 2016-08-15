@@ -145,8 +145,7 @@ func (client *Client) onPacket(decoder *decoder, packet *packet) ([]interface{},
 		message = "disconnection"
 	case _ERROR:
 		message = "error"
-	case _ACK:
-	case _BINARY_ACK:
+	case _ACK, _BINARY_ACK:
 		return nil, client.onAck(packet.Id, decoder, packet)
 	default:
 		message = decoder.Message()
